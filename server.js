@@ -1,15 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const PORT = process.env.PORT || 5000;
-
-// const MONGOURL=process.env.MONGO_URL; 
+const port = process.env.PORT || 5000;
 
 const cors = require('cors');
 app.use(cors());
 
 app.use(express.json()); 
-mongoose.connect("mongodb://localhost:27017/fruitDB")
+mongoose.connect('mongodb://127.0.0.1:27017/Faqdb')
 
 const faqSchema = new mongoose.Schema({
     question: String,
@@ -66,8 +64,8 @@ app.delete('/faqs/:id', async (req, res) => {
     }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(port, () => {
+    console.log(Server is running on port ${port});
 });
 
 
