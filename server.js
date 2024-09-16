@@ -1,15 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const app = express();
-const PORT = 3000;
-
-// const MONGOURL=process.env.MONGO_URL; 
-
 const cors = require('cors');
-app.use(cors());
 
-app.use(express.json()); 
-mongoose.connect("mongodb://localhost:27017/fruitDB")
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(cors());
+app.use(express.json());
+
+mongoose.connect('mongodb://127.0.0.1:27017/fruitDB', { useNewUrlParser: true, useUnifiedTopology: true })
+   .then(() => console.log('Connected to MongoDB'))
+   .catch(err => console.error('Could not connect to MongoDB...', err));
 
 const faqSchema = new mongoose.Schema({
     question: String,
@@ -36,6 +37,7 @@ app.get('/faqs', async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 });
+
 app.get('/faqs/:id', async (req, res) => {
     try {
         const faq = await Faq.findById(req.params.id);
