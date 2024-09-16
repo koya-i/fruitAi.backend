@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-const MONGOURL=process.env.MONGO_URL; 
+// const MONGOURL=process.env.MONGO_URL; 
 
 const cors = require('cors');
 app.use(cors());
 
 app.use(express.json()); 
-mongoose.connect(MONGOURL)
+mongoose.connect("mongodb://localhost:27017/fruitDB")
 
 const faqSchema = new mongoose.Schema({
     question: String,
