@@ -7,7 +7,7 @@ const cors = require('cors');
 app.use(cors());
 
 app.use(express.json()); 
-mongoose.connect('mongodb://127.0.0.1:27017/Faqdb')
+mongoose.connect('mongodb://127.0.0.1:27017/fruitDB')
 
 const faqSchema = new mongoose.Schema({
     question: String,
@@ -65,7 +65,7 @@ app.delete('/faqs/:id', async (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(Server is running on port ${port});
+    console.log(`Server is running on port ${port}`);
 });
 
 
