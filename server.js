@@ -1,7 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const port = 3000;
+const PORT = 3000;
+
+// const MONGOURL=process.env.MONGO_URL; 
 
 const cors = require('cors');
 app.use(cors());
@@ -64,8 +66,8 @@ app.delete('/faqs/:id', async (req, res) => {
     }
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
 });
 
 
