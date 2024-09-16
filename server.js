@@ -7,7 +7,7 @@ const cors = require('cors');
 app.use(cors());
 
 app.use(express.json()); 
-mongoose.connect('mongodb://127.0.0.1:27017/fruitDB')
+mongoose.connect("mongodb://localhost:27017/fruitDB")
 
 const faqSchema = new mongoose.Schema({
     question: String,
